@@ -1,9 +1,14 @@
 History.txt
 Manifest.txt
-PostInstall.txt
 README.rdoc
 Rakefile
 lib/email_quality.rb
+lib/email_quality/address.rb
+lib/email_quality/blacklist.rb
+lib/email_quality/config.rb
+lib/email_quality/domain.rb
+lib/email_quality/server.rb
+lib/email_quality/validatability.rb
 script/console
 script/destroy
 script/generate
