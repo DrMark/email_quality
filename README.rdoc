@@ -17,6 +17,7 @@ This gem checks an email address for validity and identifies if it is from a Dis
 
   require 'email_quality'
 
+  # I consider the free email addresses to be acceptable. This will eventually be configurable
   address = EmailQuality::Address.new('valid@gmail.com')
 
   address.valid?
@@ -24,14 +25,24 @@ This gem checks an email address for validity and identifies if it is from a Dis
 
   address.domain.to_s
   # => 'gmail.com'
+  
+  address.is_open_email?
+  # => true
 
+  # This is a disposable email address
   address = EmailQuality::Address.new('notvalid@mailinator.com')
 
   address.valid?
   # => false   # because it is a DEA
 
   address.errors
-  # => [:invalid_domain]
+  # => [:blacklisted]
+  
+  address.is_trash_email?
+  # => true
+  
+  address.is_disposable_email?
+  # => true
 
 == REQUIREMENTS:
 
@@ -40,6 +51,10 @@ This gem checks an email address for validity and identifies if it is from a Dis
 == INSTALL:
 
 * sudo gem install drmark-email_quality
+
+== THANKS:
+
+* Thanks to the creators of the email_veracity gem. I am building upon their work. This will eventually be a substantially different project from that gem.
 
 == LICENSE:
 
