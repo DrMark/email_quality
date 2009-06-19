@@ -4,7 +4,7 @@
 
 == DESCRIPTION:
 
-This gem checks an email address for validity and identifies if it is from a Disposable Email Address (DEA) provider. Disposable email addresses are useful for privacy, but many sites wish to control access using a DEA. 
+This gem checks an email address for validity and identifies if it is from a Disposable Email Address (DEA) provider. Disposable email addresses are useful for privacy, but many sites wish to control access when using a DEA. 
 
 == FEATURES/PROBLEMS:
 
