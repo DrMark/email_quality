@@ -4,11 +4,12 @@ module EmailQuality
     include Validatability
 
     def Domain.whitelisted?(name)
-      Config[:whitelist].include?(name.downcase.strip)
+      Config[:whitelist].include?(name.downcase.strip) ? true : false
     end
 
     def Domain.blacklisted?(name)
-      Config[:blacklist].include?(name.downcase.strip)
+      # Config[:blacklist].include?(name.downcase.strip)
+      Blacklist.is_disposable_email?(name)
     end
 
     def initialize(name = '')
@@ -24,23 +25,11 @@ module EmailQuality
     end
 
     def whitelisted?
-      Domain.whitelisted?(name)
+      Domain.whitelisted?(name) ? true : false
     end
 
     def blacklisted?
-      Domain.blacklisted?(name)
-    end
-
-    def address_servers
-      @address_servers ||= servers_in(:a)
-    end
-
-    def exchange_servers
-      @exchange_servers ||= servers_in(:mx)
-    end
-
-    def servers
-      address_servers + exchange_servers
+      Domain.blacklisted?(name) ? true : false
     end
 
     protected
@@ -49,17 +38,6 @@ module EmailQuality
       return if whitelisted?
       add_error(:blacklisted) if blacklisted? &&
         Config[:enforce_blacklist]
-      add_error(:no_address_servers) if address_servers.empty? &&
-        Config.enforce_lookup?(:a)
-      add_error(:no_exchange_servers) if exchange_servers.empty? &&
-        Config.enforce_lookup?(:mx)
-    end
-
-    def servers_in(record)
-      return [] if name.blank?
-      Resolver.get_servers_for(name, record)
-     rescue DomainResourcesTimeoutError
-      add_error :timed_out
     end
 
   end

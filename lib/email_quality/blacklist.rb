@@ -2,15 +2,19 @@ module EmailQuality
   class Blacklist
 
     attr_reader :value
+    class <<self
+      attr_reader :all_domains, :forwarding_domains, :trash_domains, :shredder_domains, :time_bound_domains, :open_domains
+    end
+
 
     def initialize(ary = @@all_domains)
       @value = ary
     end
     
     # the full list of invalid email domains
-    @@all_domains = %w[0815.ru 0sg.net 0wnd.net 0wnd.org 10minutemail.com 12hourmail.com 1chuan.com 1zhuan.com 21cn.com 2prong.com 3126.com 3d-painting.com 3g.ua 4warding.com 4warding.net 4warding.org 50e.info 6url.com 9ox.net a-bc.net abwesend.de addcom.de agnitumhost.net akapost.com alpenjodel.de alphafrau.de amorki.pl anonbox.net anonymbox.com antichef.com antichef.net antispam.de antispam24.de autosfromus.com baldmama.de baldpapa.de ballyfinance.com betriebsdirektor.de bigmir.net bin-wieder-da.de bio-muesli.info bio-muesli.net bk.ru bleib-bei-mir.de blockfilter.com bluebottle.com bodhi.lawlita.com bonbon.net briefemail.com brokenvalve.com brokenvalve.org bsnow.net bspamfree.org buerotiger.de bugmenot.com bumpymail.com buy-24h.net.ru cashette.com center-mail.de centermail.at centermail.ch centermail.com centermail.de centermail.info centermail.net cghost.s-a-d.de chongsoft.org cool.fr.nf coole-files.de cosmorph.com courriel.fr.nf curryworld.de cust.in cyber-matrix.com dandikmail.com dating4best.net deadspam.com despam.it despammed.com dfgh.net die-besten-bilder.de die-genossen.de die-optimisten.de die-optimisten.net dieMailbox.de digital-filestore.de directbox.com discardmail.com discardmail.de discartmail.com disposeamail.com docmail.cz dodgeit.com dodgit.com dogit.com dontreg.com dontsendmespam.de dontsentmespam.de download-privat.de dumpandjunk.com dumpmail.com dumpmail.de dyndns.org e-mail.com e-mail.org e4ward.com eintagsmail.de email.org email4u.info emaildienst.de emailias.com emailmiser.com emailtaxi.de emailto.de emailwarden.com enterto.com example.com fahr-zur-hoelle.org fakeinformation.com falseaddress.com fantasymail.de farifluset.mailexpire.com fastacura.com fastchevy.com fastchrysler.com fastkawasaki.com fastmazda.com fastmitsubishi.com fastnissan.com fastsubaru.com fastsuzuki.com fasttoyota.com fastyamaha.com feinripptraeger.de fettabernett.de filzmail.com fishfuse.com forgetmail.com freemeilaadressforall.net freudenkinder.de fromru.com front14.org gawab.com gentlemansclub.de getonemail.com ghosttexter.de gishpuppy.com gold-profits.info goldtoolbox.com golfilla.info great-host.in greensloth.com guerillamail.com guerillamail.org guerrillamail.biz guerrillamail.com guerrillamail.de guerrillamail.info guerrillamail.org guerrillamailblock.com h8s.org hab-verschlafen.de habmalnefrage.de haltospam.com hatespam.org herr-der-mails.de hidemail.de home.de hush.com hushmail.com i.ua ich-bin-verrueckt-nach-dir.de ich-will-net.de imails.info imstations.com inbox.ru inbox2.info inboxclean.org incognitomail.net inerted.com inet.ua inmail24.com ipoo.org ist-allein.info ist-einmalig.de ist-ganz-allein.de ist-willig.de izmail.net jetable.com jetable.de jetable.fr.nf jetable.net jetable.org jetfix.ee jetzt-bin-ich-dran.com jn-club.de junkmail.com kaffeeschluerfer.com kaffeeschluerfer.de kasmail.com killmail.com killmail.net kinglibrary.net klassmaster.com klassmaster.net kommespaeter.de krim.ws kuh.mu kulturbetrieb.info lass-es-geschehen.de liebt-dich.info link2mail.net list.ru listomail.com litedrop.com lortemail.dk loveyouforever.de maennerversteherin.com maennerversteherin.de mail.by mail.htl22.at mail.misterpinball.de mail.ru mail.svenz.eu mail15.com mail2rss.org mail333.com mail4days.com mail4u.info mailblocks.com mailbucket.org mailcatch.com maileater.com mailexpire.com mailfreeonline.com mailin8r.com mailinater.com mailinator.com mailinator.net mailinator2.com mailinblack.com mailmoat.com mailnull.com mailquack.com mailshell.com mailsiphon.com mailtrash.net mailueberfall.de mailzilla.com makemetheking.com mamber.net meine-dateien.info meine-diashow.de meine-fotos.info meine-urlaubsfotos.de meinspamschutz.de messagebeamer.de metaping.com mintemail.com mintemail.uni.cc mns.ru moncourrier.fr.nf monemail.fr.nf monmail.fr.nf mt2009.com mufmail.com muskelshirt.de mx0.wwwnew.eu my-mail.ch myadult.info mycleaninbox.net mymail-in.net myspamless.com mytempemail.com mytop-in.net mytrashmail.com mytrashmail.compookmail.com nervmich.net nervtmich.net netmails.com netmails.net netterchef.de netzidiot.de neue-dateien.de neverbox.com nm.ru no-spam.ws nobulk.com nomail2me.com nospam4.us nospamfor.us nospammail.net nowmymail.com nullbox.info nur-fuer-spam.de nurfuerspam.de nybella.com odaymail.com office-dateien.de oikrach.com oneoffemail.com oopi.org open.by orangatango.com partybombe.de partyheld.de phreaker.net pisem.net pleasedontsendmespam.de polizisten-duzer.de poofy.org pookmail.com pornobilder-mal-gratis.com portsaid.cc postfach.cc privacy.net prydirect.info pryworld.info public-files.de punkass.com put2.net quantentunnel.de qv7.info ralib.com raubtierbaendiger.de recode.me record.me recursor.net rejectmail.com rootprompt.org saeuferleber.de safe-mail.net safersignup.de sags-per-mail.de sandelf.de satka.net schmusemail.de schreib-doch-mal-wieder.de senseless-entertainment.com shared-files.de shieldedmail.com shinedyoureyes.com shortmail.net sibmail.com siria.cc skeefmail.net slaskpost.se slopsbox.com sms.at sneakemail.com sofort-mail.de sofortmail.de sogetthis.com sonnenkinder.org soodonims.com spam.la spamavert.com spambob.com spambob.net spambob.org spambog.com spambog.de spambog.ru spambox.us spamcannon.com spamcannon.net spamcon.org spamcorptastic.com spamcowboy.com spamcowboy.net spamcowboy.org spamday.com spameater.com spameater.org spamex.com spamfree24.com spamfree24.de spamfree24.eu spamfree24.info spamfree24.net spamfree24.org spamgourmet.com spamgourmet.net spamgourmet.org spamgrube.net spamherelots.com spamhole.com spamify.com spaminator.de spaml.com spammote.com spammotel.com spammuffel.de spamoff.de spamreturn.com spamspot.com spamtrail.com sperke.net sriaus.com streber24.de super-auswahl.de sweetville.net synchromash.com tagesmail.eu teewars.org temp-mail.com temp-mail.org tempe-mail.com tempemail.biz tempemail.net tempinbox.com tempomail.fr temporarily.de temporaryforwarding.com temporaryinbox.com terminverpennt.de test.com test.de thepryam.info thisisnotmyrealemail.com topmail-files.de tortenboxer.de totalmail.de trash-mail.com trash-mail.de trashbox.eu trashdevil.com trashdevil.de trashmail.com trashmail.de trashmail.net trashmail.org trashymail.com trashymail.net trimix.cn turboprinz.de turboprinzessin.de tut.by twinmail.de ua.fm uk2.net ukr.net unterderbruecke.de verlass-mich-nicht.de vinbazar.com vollbio.de volloeko.de vorsicht-bissig.de vorsicht-scharf.de walala.org war-im-urlaub.de wbb3.de webmail4u.eu wegwerfadresse.de wegwerfemail.com wegwerfemail.de weibsvolk.de weibsvolk.org weinenvorglueck.de wh4f.org whopy.com will-hier-weg.de willhackforfood.biz wir-haben-nachwuchs.de wir-sind-cool.org wirsindcool.de wolke7.net women-at-work.org wormseo.cn wp.pl wronghead.com wuzup.net xents.com xmail.com xmaily.com xoxy.net xsecurity.org yandex.ru yesey.net yopmail.com yopmail.fr yopmail.net yopweb.com youmailr.com ystea.org yzbid.com zoemail.com zoemail.net zweb.in ]
+    @all_domains = %w[0815.ru 0sg.net 0wnd.net 0wnd.org 10minutemail.com 12hourmail.com 1chuan.com 1zhuan.com 21cn.com 2prong.com 3126.com 3d-painting.com 3g.ua 4warding.com 4warding.net 4warding.org 50e.info 6url.com 9ox.net a-bc.net abwesend.de addcom.de agnitumhost.net akapost.com alpenjodel.de alphafrau.de amorki.pl anonbox.net anonymbox.com antichef.com antichef.net antispam.de antispam24.de autosfromus.com baldmama.de baldpapa.de ballyfinance.com betriebsdirektor.de bigmir.net bin-wieder-da.de bio-muesli.info bio-muesli.net bk.ru bleib-bei-mir.de blockfilter.com bluebottle.com bodhi.lawlita.com bonbon.net briefemail.com brokenvalve.com brokenvalve.org bsnow.net bspamfree.org buerotiger.de bugmenot.com bumpymail.com buy-24h.net.ru cashette.com center-mail.de centermail.at centermail.ch centermail.com centermail.de centermail.info centermail.net cghost.s-a-d.de chongsoft.org cool.fr.nf coole-files.de cosmorph.com courriel.fr.nf curryworld.de cust.in cyber-matrix.com dandikmail.com dating4best.net deadspam.com despam.it despammed.com dfgh.net die-besten-bilder.de die-genossen.de die-optimisten.de die-optimisten.net dieMailbox.de digital-filestore.de directbox.com discardmail.com discardmail.de discartmail.com disposeamail.com docmail.cz dodgeit.com dodgit.com dogit.com dontreg.com dontsendmespam.de dontsentmespam.de download-privat.de dumpandjunk.com dumpmail.com dumpmail.de dyndns.org e-mail.com e-mail.org e4ward.com eintagsmail.de email.org email4u.info emaildienst.de emailias.com emailmiser.com emailtaxi.de emailto.de emailwarden.com enterto.com example.com fahr-zur-hoelle.org fakeinformation.com falseaddress.com fantasymail.de farifluset.mailexpire.com fastacura.com fastchevy.com fastchrysler.com fastkawasaki.com fastmazda.com fastmitsubishi.com fastnissan.com fastsubaru.com fastsuzuki.com fasttoyota.com fastyamaha.com feinripptraeger.de fettabernett.de filzmail.com fishfuse.com forgetmail.com freemeilaadressforall.net freudenkinder.de fromru.com front14.org gawab.com gentlemansclub.de getonemail.com ghosttexter.de gishpuppy.com gold-profits.info goldtoolbox.com golfilla.info great-host.in greensloth.com guerillamail.com guerillamail.org guerrillamail.biz guerrillamail.com guerrillamail.de guerrillamail.info guerrillamail.org guerrillamailblock.com h8s.org hab-verschlafen.de habmalnefrage.de haltospam.com hatespam.org herr-der-mails.de hidemail.de home.de hush.com hushmail.com i.ua ich-bin-verrueckt-nach-dir.de ich-will-net.de imails.info imstations.com inbox.ru inbox2.info inboxclean.org incognitomail.net inerted.com inet.ua inmail24.com ipoo.org ist-allein.info ist-einmalig.de ist-ganz-allein.de ist-willig.de izmail.net jetable.com jetable.de jetable.fr.nf jetable.net jetable.org jetfix.ee jetzt-bin-ich-dran.com jn-club.de junkmail.com kaffeeschluerfer.com kaffeeschluerfer.de kasmail.com killmail.com killmail.net kinglibrary.net klassmaster.com klassmaster.net kommespaeter.de krim.ws kuh.mu kulturbetrieb.info lass-es-geschehen.de liebt-dich.info link2mail.net list.ru listomail.com litedrop.com lortemail.dk loveyouforever.de maennerversteherin.com maennerversteherin.de mail.by mail.htl22.at mail.misterpinball.de mail.ru mail.svenz.eu mail15.com mail2rss.org mail333.com mail4days.com mail4u.info mailblocks.com mailbucket.org mailcatch.com maileater.com mailexpire.com mailfreeonline.com mailin8r.com mailinater.com mailinator.com mailinator.net mailinator2.com mailinblack.com mailmoat.com mailnull.com mailquack.com mailshell.com mailsiphon.com mailtrash.net mailueberfall.de mailzilla.com makemetheking.com mamber.net meine-dateien.info meine-diashow.de meine-fotos.info meine-urlaubsfotos.de meinspamschutz.de messagebeamer.de metaping.com mintemail.com mintemail.uni.cc mns.ru moncourrier.fr.nf monemail.fr.nf monmail.fr.nf mt2009.com mufmail.com muskelshirt.de mx0.wwwnew.eu my-mail.ch myadult.info mycleaninbox.net mymail-in.net myspamless.com mytempemail.com mytop-in.net mytrashmail.com mytrashmail.compookmail.com nervmich.net nervtmich.net netmails.com netmails.net netterchef.de netzidiot.de neue-dateien.de neverbox.com nm.ru no-spam.ws nobulk.com nomail2me.com nospam4.us nospamfor.us nospammail.net nowmymail.com nullbox.info nur-fuer-spam.de nurfuerspam.de nybella.com odaymail.com office-dateien.de oikrach.com oneoffemail.com oopi.org open.by orangatango.com partybombe.de partyheld.de phreaker.net pisem.net pleasedontsendmespam.de polizisten-duzer.de poofy.org pookmail.com pornobilder-mal-gratis.com portsaid.cc postfach.cc privacy.net prydirect.info pryworld.info public-files.de punkass.com put2.net quantentunnel.de qv7.info ralib.com raubtierbaendiger.de recode.me record.me recursor.net rejectmail.com rootprompt.org saeuferleber.de safe-mail.net safersignup.de sags-per-mail.de sandelf.de satka.net schmusemail.de schreib-doch-mal-wieder.de senseless-entertainment.com shared-files.de shieldedmail.com shinedyoureyes.com shortmail.net sibmail.com siria.cc skeefmail.net slaskpost.se slopsbox.com sms.at sneakemail.com sofort-mail.de sofortmail.de sogetthis.com sonnenkinder.org soodonims.com spam.la spamavert.com spambob.com spambob.net spambob.org spambog.com spambog.de spambog.ru spambox.us spamcannon.com spamcannon.net spamcon.org spamcorptastic.com spamcowboy.com spamcowboy.net spamcowboy.org spamday.com spameater.com spameater.org spamex.com spamfree24.com spamfree24.de spamfree24.eu spamfree24.info spamfree24.net spamfree24.org spamgourmet.com spamgourmet.net spamgourmet.org spamgrube.net spamherelots.com spamhole.com spamify.com spaminator.de spaml.com spammote.com spammotel.com spammuffel.de spamoff.de spamreturn.com spamspot.com spamtrail.com sperke.net sriaus.com streber24.de super-auswahl.de sweetville.net synchromash.com tagesmail.eu teewars.org temp-mail.com temp-mail.org tempe-mail.com tempemail.biz tempemail.net tempinbox.com tempomail.fr temporarily.de temporaryforwarding.com temporaryinbox.com terminverpennt.de test.com test.de thepryam.info thisisnotmyrealemail.com topmail-files.de tortenboxer.de totalmail.de trash-mail.com trash-mail.de trashbox.eu trashdevil.com trashdevil.de trashmail.com trashmail.de trashmail.net trashmail.org trashymail.com trashymail.net trimix.cn turboprinz.de turboprinzessin.de tut.by twinmail.de ua.fm uk2.net ukr.net unterderbruecke.de verlass-mich-nicht.de vinbazar.com vollbio.de volloeko.de vorsicht-bissig.de vorsicht-scharf.de walala.org war-im-urlaub.de wbb3.de webmail4u.eu wegwerfadresse.de wegwerfemail.com wegwerfemail.de weibsvolk.de weibsvolk.org weinenvorglueck.de wh4f.org whopy.com will-hier-weg.de willhackforfood.biz wir-haben-nachwuchs.de wir-sind-cool.org wirsindcool.de wolke7.net women-at-work.org wormseo.cn wp.pl wronghead.com wuzup.net xents.com xmail.com xmaily.com xoxy.net xsecurity.org yandex.ru yesey.net yopmail.com yopmail.fr yopmail.net yopweb.com youmailr.com ystea.org yzbid.com zoemail.com zoemail.net zweb.in ]
 
-    @@forwarding_domains = ['1chuan.com',
+    @forwarding_domains = ['1chuan.com',
      '1zhuan.com',
      '4warding.com',
      '4warding.net',
@@ -47,7 +51,7 @@ module EmailQuality
      'xemaps.com',
      'xmaily.com']
      
-     @@trash_domains = ['10minutemail.com',
+     @trash_domains = ['10minutemail.com',
      '675hosting.com',
      '675hosting.net',
      '675hosting.org',
@@ -156,9 +160,9 @@ module EmailQuality
      'xagloo.com',
      'yopmail.com']
      
-     @@shredder_domains = ['spambob.org']
+     @shredder_domains = ['spambob.org']
      
-     @@time_bound_domains = ['10minutemail.com',
+     @time_bound_domains = ['10minutemail.com',
      'bugmenot.com',
      'buyusedlibrarybooks.org',
      'despam.it',
@@ -201,7 +205,7 @@ module EmailQuality
      'wh4f.org',
      'yopmail.com']
      
-     @@open_domains = ['aim.com',
+     @open_domains = ['aim.com',
      'aol.com',
      'bk.ru',
      'blu.it',
@@ -284,28 +288,28 @@ module EmailQuality
      'websurfer.co.za',
      'workmail.co.za']
 
-  def is_disposable_email?(domain)
-    @@all_domains.include?(domain) ? true : false
+  def self.is_disposable_email?(domain)
+    @all_domains.include?(domain) ? true : false
   end
 
-  def is_forwarding_email?(domain)
-    @@forwarding_domains.include?(domain) ? true : false
+  def self.is_forwarding_email?(domain)
+    @forwarding_domains.include?(domain) ? true : false
   end
 
-  def is_trash_email?(domain)
-    @@trash_domains.include?(domain) ? true : false
+  def self.is_trash_email?(domain)
+    @trash_domains.include?(domain) ? true : false
   end
 
-  def is_shredder_email?(domain)
-    @@shredder_domains.include?(domain) ? true : false
+  def self.is_shredder_email?(domain)
+    @shredder_domains.include?(domain) ? true : false
   end
 
-  def is_time_bound_email?(domain)
-    @@time_bound_domains.include?(domain) ? true : false
+  def self.is_time_bound_email?(domain)
+    @time_bound_domains.include?(domain) ? true : false
   end
 
-  def is_open_email?(domain)
-    @@open_domains.include?(domain) ? true : false
+  def self.is_open_email?(domain)
+    @open_domains.include?(domain) ? true : false
   end
 
 

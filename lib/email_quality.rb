@@ -1,14 +1,9 @@
 $:.unshift(File.dirname(__FILE__)) unless
   $:.include?(File.dirname(__FILE__)) || $:.include?(File.expand_path(File.dirname(__FILE__)))
 
-# require 'resolv'
-# require 'timeout'
-# require 'email_quality/core_extensions'
 require 'email_quality/validatability'
 require 'email_quality/blacklist'
 require 'email_quality/config'
-require 'email_quality/server'
-# require 'email_quality/resolver'
 require 'email_quality/domain'
 require 'email_quality/address'
   

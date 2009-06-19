@@ -19,39 +19,38 @@ module EmailQuality
 
     def email_address=(new_email_address)
       @email_address = new_email_address.to_s
-      @self.email_address = Domain.new(@email_address.split('@')[1] || '')
+      @domain = Domain.new(@email_address.split('@')[1] || '')
     end
 
     def is_disposable_email?
-      Blacklist.is_disposable_email?(@email_address)
+      Blacklist.is_disposable_email?(@domain.name)
     end
 
     def is_forwarding_email?
-      Blacklist.is_forwarding_email?(@email_address)
+      Blacklist.is_forwarding_email?(@domain.name)
     end
 
     def is_trash_email?
-      Blacklist.is_trash_email?(@email_address)
+      Blacklist.is_trash_email?(@domain.name)
     end
 
     def is_shredder_email?
-      Blacklist.is_shredder_email?(@email_address)
+      Blacklist.is_shredder_email?(@domain.name)
     end
 
     def is_time_bound_email?
-      Blacklist.is_time_bound_email?(@email_address)
+      Blacklist.is_time_bound_email?(@domain.name)
     end
 
     def is_open_email?
-      Blacklist.is_open_email?(@email_address)
+      Blacklist.is_open_email?(@domain.name)
     end
     
     protected
 
     def validate!
       add_error(:malformed) if !pattern_valid?
-      return unless Config[:lookup]
-      add_errors(self.email_address.errors)
+      add_errors(domain.errors)
     end
 
     def pattern_valid?

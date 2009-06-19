@@ -8,8 +8,6 @@ module EmailQuality
         1mintemail.mooo.com spammotel.com trashmail.net ],
       :valid_pattern =>
         /\A(([\w]+[\w\+_\-\.]+[\+_\-\.]{0})@((?:[-a-z0-9]+\.)+[a-z]{2,})){1}\Z/i,
-      :timeout => 2,
-      :lookup => [:a],
       :enforce_blacklist => true,
       :enforce_whitelist => true }
     @options = DEFAULT_OPTIONS.clone
@@ -38,11 +36,6 @@ module EmailQuality
         raise ArgumentError, "options must be a Hash not #{options.class}"
       end
       @options.update(options)
-    end
-
-    def Config.enforce_lookup?(record)
-      return unless @options[:lookup].is_a?(Array)
-      @options[:lookup].any? { |i| i.to_s == record.to_s }
     end
 
     def Config.revert!
